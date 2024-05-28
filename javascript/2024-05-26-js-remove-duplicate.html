@@ -25,7 +25,8 @@
 
       // set
       function remove1(arr) {
-        return Array.from(new Set(arr));
+        // return Array.from(new Set(arr));
+        return [...new Set(arr)];
       }
 
       // splice
@@ -109,11 +110,19 @@
         let flag;
         let newArr = [];
         for (let i = 0, len = ary.length; i < len; i++) {
-          // 判断是否为第一个元素或者相邻的元素不相同
           if (!i || flag !== ary[i]) {
             newArr.push(ary[i]);
           }
           flag = ary[i];
+        }
+        return newArr;
+      }
+
+      function remove61(arr) {
+        arr = arr.sort();
+        let newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+          arr[i] === arr[i - 1] ? newArr : newArr.push(arr[i]);
         }
         return newArr;
       }
@@ -126,7 +135,7 @@
         }, []);
       }
 
-      console.log("arr", remove6(array));
+      console.log("after remove duplicates:", remove7(array));
     </script>
   </body>
 </html>
